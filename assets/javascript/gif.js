@@ -1,4 +1,8 @@
-//create new button when Submit is pressed 
+function submitButton() { //when submit is pressed, a new button is added
+    var userInput = $('#animal-input').val();
+    if (userInput) {
+        $('#animal-buttons').append("<button type='button' onclick='results(\"" + userInput + "\")' class='btn btn-primary' value=' " + userInput + "'> " + userInput + " </button>");
+    }
 
 $("button").on("click", function () { //this code will have the button when you click the tag 
     var animal = $(this).attr("data-animal");
@@ -11,16 +15,18 @@ $("button").on("click", function () { //this code will have the button when you 
         console.log(response);
         var results = response.data;
         for (var i = 0; i < results.length; i++) {
-            var animalDiv = $("<div>");
-            var p = $('<p>').text("rating: " + results[i].rating);
+            var animalDiv = $("<div>"); //empty div
+            var p = $('<p>').text("rating: " + results[i].rating); //displays rating
             var image = $("<img>");
-            image.attr("src", results[i].images.fixed_height.url);
+            image.attr("src", results[i].images.fixed_height.url); //displays image
             animalDiv.append(p);
             animalDiv.append(image);
             $("#gifs-appear-here").prepend(animalDiv);
         }
     });
 });
+
+}
 
 $('.movImage').on('click', function() { //this code allows the gif to move and freeze
     var state = $(this).attr('data-state');
@@ -31,8 +37,5 @@ $('.movImage').on('click', function() { //this code allows the gif to move and f
         $(this).attr('src', $(this).attr("data-still"));
         $(this).attr('data-state', 'still');
     }
-
 });
-
-//need a code to search the giphy.api
 //code for putting the picturesd 3 per row 
