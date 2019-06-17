@@ -1,3 +1,8 @@
+function AnimalButton() {
+        var userInput = $('#animal-input').val();
+        button(userInput);
+    }
+    
 function submitButton() { //when submit is pressed, a new button is added
     var userInput = $('#animal-input').val();
     if (userInput) {
