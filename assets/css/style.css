@@ -1,9 +1,23 @@
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;    
+}
+
 .input-group {
     width: 50%;
 }
 
-.Submit {
-    background-color: blue;
+.btn-success {
+    background-color: blueviolet;
     color: white;
     font-style: bolder; 
+}
+
+.btn-primary {
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+body {
+    background-color: lightgoldenrodyellow;
 }
