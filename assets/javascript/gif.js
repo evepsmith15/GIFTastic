@@ -20,21 +20,27 @@ function results(animal) {
             method: "GET"
         }).then(function (response) {
             var results = response.data;
-            console.log(response);
             for (var i = 0; i < results.length; i++) {
                 var animalDiv = $("<div>"); //empty div
                 var p = $('<p>').text("rating: " + results[i].rating); //displays rating
-                var image = $("<img>");
-                image.attr("src", results[i].images.fixed_height.url); //displays image
+                var image = $("<img>");//empty image
+                var animation = results[i].images.fixed_height.url;
+                var stop = results[i].images.fixed_height_still.url;
+                image.attr("src", stop); 
+                image.attr("data-still", stop);
+                image.attr("data-animate", animation); //displays default image
+                image.attr("data-state", "still"); 
+                image.addClass("gif");
                 animalDiv.append(p);
                 animalDiv.append(image);
-                $("#gifs-appear-here").prepend(animalDiv);
+                $("#gifs-appear-here").prepend(animalDiv); //displays info
             }
         });
     });
 }
 
-$('.movImage').on('click', function () { //this code allows the gif to move and freeze
+
+$(document).on('click', '.gif', function () { //this code allows the gif to move and freeze
     var state = $(this).attr('data-state');
     if (state == 'still') {
         $(this).attr('src', $(this).attr("data-animate"));
@@ -44,5 +50,3 @@ $('.movImage').on('click', function () { //this code allows the gif to move and 
         $(this).attr('data-state', 'still');
     }
 });
-
-//code for putting the picturesd 3 per row 
